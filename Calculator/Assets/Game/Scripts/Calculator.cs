@@ -6,21 +6,23 @@ namespace Calc
 {
     public class Calculator : MonoBehaviour
     {
-        public string currentExpression; //Current Expression
         public List<string> extractedExpression = new List<string>(); //temperory list for the calculation
         public List<string> operatorOrder = new List<string>(); // Operator Order
 
         [ContextMenu("Show")]
-        public void CalculateTheExpression()
+        public string CalculateTheExpression(string expression)
         {
             //Clearing The List Before Starting
             extractedExpression.Clear();
 
             //Spliting The Expression
-            extractedExpression = SplitExpressions(currentExpression);
+            extractedExpression = SplitExpressions(expression);
 
             //Handling Actual Calculations
             HandlingOpretionalCalculations(extractedExpression);
+
+            //Get The Answer
+            return extractedExpression[0];
         }
 
         //Spliting the expression in a List
