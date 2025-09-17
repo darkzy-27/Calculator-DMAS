@@ -84,7 +84,7 @@ namespace Calc
             Debug.Log("Last input: " + lastInput);
 
             //Edge Case : to check if first character of the string shouldnt be a +/-
-            if (string.IsNullOrEmpty(screenDisplay.text) || screenDisplay.text.Length == 1)
+            if (string.IsNullOrEmpty(screenDisplay.text))
             {
                 //if it is the ignore
                 if (symbol != "-" && symbol != ".")
@@ -98,12 +98,10 @@ namespace Calc
             {
                 if (screenDisplay.text.Length == 1 && lastInput == "-")
                 {
-                    screenDisplay.text += symbol;
+                    return; // ignore
                 }
-                else
-                {
-                    ReplaceLastCharacter(symbol);
-                }
+
+                ReplaceLastCharacter(symbol);
             }
             //Edge Case : to ignore if decimal is already present and we cant let them to put decimal again
             else if (lastInput == ".")
