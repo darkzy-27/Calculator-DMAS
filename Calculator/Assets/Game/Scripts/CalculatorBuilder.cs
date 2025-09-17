@@ -96,7 +96,14 @@ namespace Calc
             //Edge Case : to check if the last input is operator and the next input is also a operator so replaces the last input by current input
             if (!string.IsNullOrEmpty(lastInput) && IsOperator(lastInput))
             {
-                ReplaceLastCharacter(symbol);
+                if (screenDisplay.text.Length == 1 && lastInput == "-")
+                {
+                    screenDisplay.text += symbol;
+                }
+                else
+                {
+                    ReplaceLastCharacter(symbol);
+                }
             }
             //Edge Case : to ignore if decimal is already present and we cant let them to put decimal again
             else if (lastInput == ".")
